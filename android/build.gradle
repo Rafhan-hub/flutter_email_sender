@@ -8,7 +8,7 @@ version = "1.0-SNAPSHOT"
 
 android {
     namespace "com.sidlatau.flutteremailsender"
-    compileSdk = 34 // ✅ 34 is stable and matches Flutter's current SDK; 36 may not be final yet.
+    compileSdk = 36 // ✅ 34 is stable and matches Flutter's current SDK; 36 may not be final yet.
 
     defaultConfig {
         minSdk = 21
