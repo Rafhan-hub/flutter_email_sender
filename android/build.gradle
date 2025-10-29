@@ -1,6 +1,6 @@
 plugins {
     id "com.android.library"
-    id "org.jetbrains.kotlin.android" version "2.0.20"
+    id "org.jetbrains.kotlin.android"
 }
 
 group = "com.sidlatau.flutteremailsender"
@@ -8,7 +8,7 @@ version = "1.0-SNAPSHOT"
 
 android {
     namespace "com.sidlatau.flutteremailsender"
-    compileSdk = 36
+    compileSdk = 34 // ✅ 34 is stable and matches Flutter's current SDK; 36 may not be final yet.
 
     defaultConfig {
         minSdk = 21
@@ -40,6 +40,9 @@ repositories {
 }
 
 dependencies {
+    // ✅ Use same Kotlin stdlib version as your main app
     implementation "org.jetbrains.kotlin:kotlin-stdlib:2.0.20"
+
+    // ✅ AppCompat for Intent handling and compatibility APIs
     api "androidx.appcompat:appcompat:1.7.1"
 }
