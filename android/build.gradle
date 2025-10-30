@@ -1,48 +1,22 @@
-plugins {
-    id "com.android.library"
-    id "org.jetbrains.kotlin.android"
-}
-
-group = "com.sidlatau.flutteremailsender"
-version = "1.0-SNAPSHOT"
-
-android {
-    namespace "com.sidlatau.flutteremailsender"
-    compileSdk = 36 // ✅ 34 is stable and matches Flutter's current SDK; 36 may not be final yet.
-
-    defaultConfig {
-        minSdk = 21
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+buildscript {
+    ext.kotlin_version = '2.2.10'
+    repositories {
+        google()
+        mavenCentral()
     }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
-    lint {
-        disable.add("InvalidPackage")
-    }
-
-    sourceSets {
-        main.java.srcDirs += "src/main/kotlin"
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.6.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
-repositories {
-    google()
-    mavenCentral()
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
 
-dependencies {
-    // ✅ Use same Kotlin stdlib version as your main app
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.0.20"
-
-    // ✅ AppCompat for Intent handling and compatibility APIs
-    api "androidx.appcompat:appcompat:1.7.1"
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
 }
